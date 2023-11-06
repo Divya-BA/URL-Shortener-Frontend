@@ -9,7 +9,7 @@ import Swal from 'sweetalert2';
 
 function Urls() {
   const [urls, setUrls] = useState([]);
-  const BASE_URL =`http://localhost:3000`
+  const BASE_URL =`https://url-shortener-application-task.onrender.com`
 
 
   useEffect(() => {
