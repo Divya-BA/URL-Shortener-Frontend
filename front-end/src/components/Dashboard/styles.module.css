@@ -1,0 +1,15 @@
+.canvas{
+    height: 50rem;
+    
+}
+p{
+    display: inline;
+    margin: 2px;
+}
+.chart{
+
+    height: 40rem;
+   display: flex;
+   justify-content: center;
+
+}
