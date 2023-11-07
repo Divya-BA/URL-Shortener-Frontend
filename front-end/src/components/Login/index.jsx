@@ -22,7 +22,6 @@ const Login = () => {
 		e.preventDefault();
 		setLoading(true);
 		try {
-			// const url =`http://localhost:3000/api/auth`
 			const url =`https://shorturl-ba.onrender.com/api/auth`
 
 			const { data: res } = await axios.post(url, data);
@@ -72,7 +71,9 @@ const Login = () => {
 							<p className={styles.p} style={{ padding: "0 15px" }}>Forgot Password ?</p>
 						</Link>
 						{error && <div className={styles.error_msg}>{error}</div>}
-						{loading ?(<Spinner/>):(<button type="submit" className={styles.green_btn}>
+						{loading ?(
+						<Spinner/>
+						):(<button type="submit" className={styles.green_btn}>
 							Sign In
 						</button>)}
 						

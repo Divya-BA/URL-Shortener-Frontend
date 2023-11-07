@@ -11,7 +11,6 @@ import Spinner from '../Spinner';
 function Urls() {
   const [urls, setUrls] = useState([]);
   const [loading, setLoading] = useState(true); 
-  // const BASE_URL =`http://localhost:3000`
   const BASE_URL=`https://shorturl-ba.onrender.com`
 
 

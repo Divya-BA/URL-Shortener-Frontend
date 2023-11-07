@@ -12,10 +12,6 @@ const Shortener = () => {
   const [copyButtonText, setCopyButtonText] = useState('Copy');
   const [loading, setLoading] = useState(false);
 
-
-
- 
-  // const  BASE_URL =`http://localhost:3000`
   const BASE_URL=`https://shorturl-ba.onrender.com`
 
   const isValidURL = (str) => {
@@ -83,7 +79,11 @@ const Shortener = () => {
       />
       <button className={styles.button} onClick={handleShortenClick}>Shorten URL</button>
       </div>
-      {loading ? (<Spinner/>):(
+      {loading ? (
+     <div className={styles.spinnerContainer}>
+     <Spinner />
+   </div>
+      ):(
 <>
 {shortenedURL && (
         <div className={styles.shorturl}>

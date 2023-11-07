@@ -14,7 +14,6 @@ const EmailVerify = () => {
 		console.log(param.token)
 		const verifyEmailUrl = async () => {
 			try {
-				// const url=`http://localhost:3000/api/users/${param.id}/verify/${param.token}`
 				const url =`https://shorturl-ba.onrender.com/api/users/${param.id}/verify/${param.token}`
 				const { data } = await axios.get(url);
 				console.log(data);

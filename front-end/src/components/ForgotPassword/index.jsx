@@ -15,7 +15,6 @@ const ForgotPassword = () => {
 		setLoading(true); // Show the spinner
 
 		try {
-			// const url =`http://localhost:3000/api/password-reset`
 			const url=`https://shorturl-ba.onrender.com/api/password-reset`
 			const { data } = await axios.post(url, { email });
 			setMsg(data.message);
