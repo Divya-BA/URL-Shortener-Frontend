@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import { Link} from "react-router-dom";
 import styles from "./styles.module.css";
 import Spinner from "../Spinner";
 
@@ -14,7 +14,6 @@ const Signup = () => {
   const [error, setError] = useState("");
   const [msg, setMsg] = useState("");
   const [loading, setLoading] = useState(false);
-  const navigate=useNavigate();
 
   const handleChange = ({ currentTarget: input }) => {
     setData({ ...data, [input.name]: input.value });
@@ -25,10 +24,10 @@ const Signup = () => {
     setLoading(true);
 
     try {
-      const url = `https://url-shortener-application-task.onrender.com/api/users`;
+      const url = `http://localhost:3000/api/users`;
       const { data: res } = await axios.post(url, data);
       setMsg(res.message);
-	  navigate('/login')
+	  
     } catch (error) {
       if (
         error.response &&

@@ -3,13 +3,15 @@ import axios from 'axios';
 import Main from '../Main';
 import  styles from './styles.module.css'
 import Swal from 'sweetalert2'; 
+import Spinner from '../Spinner';
 
 
 
 
 function Urls() {
   const [urls, setUrls] = useState([]);
-  const BASE_URL =`https://url-shortener-application-task.onrender.com`
+  const [loading, setLoading] = useState(true); 
+  const BASE_URL =`http://localhost:3000`
 
 
   useEffect(() => {
@@ -17,6 +19,7 @@ function Urls() {
     axios.get(`${BASE_URL}/api/urls/${userId}`)
       .then((response) => {
         setUrls(response.data);
+        setLoading(false);
       })
       .catch((error) => {
         console.error('Error fetching data from the backend:', error);
@@ -50,8 +53,10 @@ function Urls() {
   return (
     <div>
       <Main/>
-      <h1>List of all Created URLs </h1>
-      <table className={styles.table}>
+      {loading ?(<Spinner/>):(
+        <>
+          <h1>List of all Created URLs </h1>
+        <table className={styles.table}>
         <thead>
           <tr>
             <th className={styles.th}>Long URL</th>
@@ -75,6 +80,10 @@ function Urls() {
           ))}
         </tbody>
       </table>
+      </>
+      )}
+    
+     
     </div>
   );
 }

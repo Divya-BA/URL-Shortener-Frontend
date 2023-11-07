@@ -1,9 +1,8 @@
-
 import React, { useState } from 'react';
 import axios from 'axios';
 import Main from '../Main';
 import styles from './styles.module.css'
-
+import Spinner from '../Spinner';
 
 
 const Shortener = () => {
@@ -11,10 +10,12 @@ const Shortener = () => {
   const [shortenedURL, setShortenedURL] = useState('');
   const [error, setError] = useState('');
   const [copyButtonText, setCopyButtonText] = useState('Copy');
+  const [loading, setLoading] = useState(false);
+
 
 
  
-  const  BASE_URL =`https://url-shortener-application-task.onrender.com`
+  const  BASE_URL =`http://localhost:3000`
 
   const isValidURL = (str) => {
     try {
@@ -33,6 +34,8 @@ const Shortener = () => {
     const userId= localStorage.getItem("userId");
     const data = { originalUrl: longURL,userId };
 
+    setLoading(true);
+
     axios
       .post(`${BASE_URL}/shorten`, data)
       .then((response) => {
@@ -46,6 +49,8 @@ const Shortener = () => {
 
         setError('Failed to shorten the URL.');
         console.error(error);
+      }).finally(() => {
+        setLoading(false); 
       });
   };
 
@@ -77,7 +82,9 @@ const Shortener = () => {
       />
       <button className={styles.button} onClick={handleShortenClick}>Shorten URL</button>
       </div>
-      {shortenedURL && (
+      {loading ? (<Spinner/>):(
+<>
+{shortenedURL && (
         <div className={styles.shorturl}>
           <a className={styles.a} href={`${BASE_URL}/${shortenedURL}`} target='_blank'> {`${BASE_URL}/${shortenedURL}`}</a>
           {/* <button className={styles.copy} onClick={handleCopyClick}>Copy</button> */}
@@ -91,6 +98,9 @@ const Shortener = () => {
         </div>
       )}
       {error && <p className={ styles.error}>Error: {error}</p>}
+      </>
+      )}
+    
     </div>
     </>
   );
