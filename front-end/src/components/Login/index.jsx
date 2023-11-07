@@ -22,7 +22,8 @@ const Login = () => {
 		e.preventDefault();
 		setLoading(true);
 		try {
-			const url =`http://localhost:3000/api/auth`
+			// const url =`http://localhost:3000/api/auth`
+			const url =`https://shorturl-ba.onrender.com/api/auth`
 
 			const { data: res } = await axios.post(url, data);
 			localStorage.setItem("token", res.data);

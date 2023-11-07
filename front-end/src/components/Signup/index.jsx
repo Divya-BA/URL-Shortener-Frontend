@@ -24,7 +24,8 @@ const Signup = () => {
     setLoading(true);
 
     try {
-      const url = `http://localhost:3000/api/users`;
+      // const url = `http://localhost:3000/api/users`;
+      const url = `https://shorturl-ba.onrender.com/api/users`
       const { data: res } = await axios.post(url, data);
       setMsg(res.message);
 	  

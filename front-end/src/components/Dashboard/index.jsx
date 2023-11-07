@@ -12,7 +12,8 @@ const Dashboard = () => {
 
   useEffect(() => {
     const userId = localStorage.getItem("userId");
-    const BASE_URL = `http://localhost:3000`;
+    // const BASE_URL = `http://localhost:3000`;
+    const BASE_URL=`https://shorturl-ba.onrender.com`
 
     axios
       .get(`${BASE_URL}/api/data/${userId}`)

@@ -12,7 +12,8 @@ const PasswordReset = () => {
 	const param = useParams();
 	const [loading, setLoading] = useState(false);
 
-	const url =`http://localhost:3000/api/password-reset/${param.id}/${param.token}`
+	// const url =`http://localhost:3000/api/password-reset/${param.id}/${param.token}`
+	const url=`https://shorturl-ba.onrender.com/api/password-reset/${param.id}/${param.token}`
 
 
 	useEffect(() => {
