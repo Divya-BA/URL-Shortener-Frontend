@@ -36,7 +36,10 @@ const EmailVerify = () => {
 					</Link>
 				</div>
 			) : (
-				<h1>404 Not Found</h1>
+				<>
+				<h1>404 Not Found </h1>
+				<p>Link is valid only for 5secs</p>
+				</>
 			)}
 		</Fragment>
 	);
